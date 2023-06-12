@@ -1,42 +1,41 @@
 import React, {useState} from 'react';
 
-function CreateTripForm() {
+function CreateRentalForm() {
 
 const initialValue = {
-    tripName: "",
-    date: "",
-    time: "",
-    location: "",
-    duration: "",
-    packingList: "",
-    guide: ""
+  startDate: "",
+  endDate: "",
+  priceAnnual: "",
+  deposit: "",
+  contactPerson: "",
+  house: "",
 }
 
-const [trip, setTrip] = useState(initialValue);
+const [rental, setRental] = useState(initialValue);
 const [savedMessage, setSavedMessage] = useState("");
 
 const handleChange = event => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    setTrip({...trip, [name]: value});
+    setRental({...rental, [name]: value});
 }
 
 const handleSubmit = event => {
     event.preventDefault();
 
-    fetch('https://mavle.dk/tomcat/rental_web_app/api/trip/create', {
+    fetch('https://mavle.dk/tomcat/rental_web_app/api/rental/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(trip)
+      body: JSON.stringify(rental)
     })
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      setTrip(initialValue);
-      setSavedMessage(`${data.tripName} er nu oprettet som tur med ${data.guide} som guide`);
+      setRental(initialValue);
+      setSavedMessage(`Fra ${data.startDate} til ${data.endDate} er der nu oprettet en lejekontrakt`);
     })
     .catch(error => {
       console.error('Error:', error);
@@ -46,88 +45,74 @@ const handleSubmit = event => {
 
   return (
     <div className="container">
-        <div className="form-group mt-3 mx-5" >
-            <label htmlFor="tripName">Navn på tur:</label>
+        <div className="form-group mt-3 mx-5">
+            <label htmlFor="startDate">Startdato:</label>
             <input 
             className="form-control" 
-            id="tripName"
-            name="tripName"
-            type="text"
-            value={trip.tripName}
+            id="startDate"
+            name="startDate"
+            type="date"
+            value={rental.startDate}
             onChange={handleChange}
-            placeholder="Navn på tur"
             />
         </div>
         <div className="form-group mt-3 mx-5">
-            <label htmlFor="date">Dato:</label>
-            <input 
-            className="form-control" 
-            id="date"
-            name="date"
-            type="text"
-            value={trip.date}
-            onChange={handleChange}
-            placeholder="åååå-mm-dd"
-            />
-        </div>
-        <div className="form-group mt-3 mx-5">
-            <label htmlFor="time">Tidspunkt:</label>
+            <label htmlFor="endDate">Slutdato:</label>
             <input
             className="form-control"
-            id="time"
-            name="time"
-            type="text"
-            value={trip.time}
+            id="endDate"
+            name="endDate"
+            type="date"
+            value={rental.endDate}
             onChange={handleChange}
-            placeholder="tt:mm"
             />
         </div>
         <div className="form-group mt-3 mx-5">
-            <label htmlFor="location">Sted:</label>
+            <label htmlFor="priceAnnual">Årlig pris:</label>
             <input
             className="form-control"
-            id="location"
-            name="location"
+            id="priceAnnual"
+            name="priceAnnual"
             type="text"
-            value={trip.location}
+            value={rental.priceAnnual}
             onChange={handleChange}
-            placeholder="Sted"
+            placeholder="Årlig pris"
             />
         </div>
         <div className="form-group mt-3 mx-5">
-            <label htmlFor="duration">Varighed:</label>
+            <label htmlFor="deposit">Depositum:</label>
             <input
             className="form-control"
-            id="duration"
-            name="duration"
+            id="deposit"
+            name="deposit"
             type="text"
-            value={trip.duration}
+            value={rental.deposit}
             onChange={handleChange}
-            placeholder="Varighed"
+            placeholder="Depositum"
             />
         </div>
         <div className="form-group mt-3 mx-5">
-            <label htmlFor="packingList">Pakkeliste:</label>
+            <label htmlFor="contactPerson">Kontaktperson:</label>
             <input
             className="form-control"
-            id="packingList"
-            name="packingList"
+            id="contactPerson"
+            name="contactPerson"
             type="text"
-            value={trip.packingList}
+            value={rental.contactPerson}
             onChange={handleChange}
-            placeholder="Pakkeliste"
+            placeholder="Kontaktperson"
             />
         </div>
         <div className="form-group mt-3 mx-5" >
-            <label htmlFor="guide">Navn på guide:</label>
+            <label htmlFor="house">Hus:</label>
             <input 
             className="form-control" 
-            id="guide"
-            name="guide"
+            id="house"
+            name="house"
             type="text"
-            value={trip.guide}
+            value={rental.house}
             onChange={handleChange}
-            placeholder="Navn på guide"
+            placeholder="Hus"
             />
         </div>
         <button 
@@ -141,5 +126,5 @@ const handleSubmit = event => {
   );
 }
 
-export default CreateTripForm
+export default CreateRentalForm
 

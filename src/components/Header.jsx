@@ -17,14 +17,14 @@ const Header = ({ user, loggedIn, login, logout }) => {
                 {user.username === "admin" ? 
                     (<>
                     <li><NavLink to="/admin">Admin Oversigt</NavLink></li>
-                    <li><NavLink to="/newguide">Opret ny guide</NavLink></li>
-                    <li><NavLink to="/newtrip">Opret ny tur</NavLink></li>
-                    <li><NavLink to="/alltripsadmin">Se alle ture</NavLink></li>
+                    <li><NavLink to="/newhouse">Opret nyt hus</NavLink></li>
+                    <li><NavLink to="/newrental">Opret ny lejeaftale</NavLink></li>
+                    <li><NavLink to="/allrentalsadmin">Se alle lejeaftaler</NavLink></li>
                     </>)
                     
                     : (<>
                     <li><NavLink to="/user">Bruger Oversigt</NavLink></li>
-                    <li><NavLink to="/alltripsuser">Se alle ture</NavLink></li>
+                    <li><NavLink to="/allrentalsuser">Se alle lejeaftaler</NavLink></li>
                     
                 </>)}
                 <div className='mx-4 mt-2' style={{float: 'right'}}><LoggedIn user={user} logout={logout} /></div>

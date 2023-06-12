@@ -3,10 +3,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from '../routes/Home';
 import About from '../routes/About';
 import Admin from '../routes/Admin';
-import NewGuide from '../routes/NewGuide';
-import NewTrip from '../routes/NewTrip';
-import AllTripsUser from '../routes/AllTripsUser';
-import AllTripsAdmin from '../routes/AllTripsAdmin';
+import NewHouse from '../routes/NewHouse';
+import NewRental from '../routes/NewRental';
+import AllRentalsUser from '../routes/AllRentalsUser';
+import AllRentalsAdmin from '../routes/AllRentalsAdmin';
 import User from '../routes/User';
 
 function Content({ user, loggedIn }) {
@@ -19,10 +19,10 @@ function Content({ user, loggedIn }) {
           <>
             <Route path="/admin" element={<Admin user={user} />} />
             <Route path="/user" element={<User user={user} />} />
-            <Route path="/newguide" element={<NewGuide user={user} />} />
-            <Route path="/newtrip" element={<NewTrip user={user} />} />
-            <Route path="/alltripsuser" element={<AllTripsUser user={user} />} />
-            <Route path="/alltripsadmin" element={<AllTripsAdmin user={user} />} />
+            <Route path="/newhouse" element={<NewHouse user={user} />} />
+            <Route path="/newrental" element={<NewRental user={user} />} />
+            <Route path="/allrentalsuser" element={<AllRentalsUser user={user} />} />
+            <Route path="/allrentalsadmin" element={<AllRentalsAdmin user={user} />} />
           </>
         )}
         <Route path="*" element={<Navigate replace to="/" />} />
