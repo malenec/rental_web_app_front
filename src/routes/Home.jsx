@@ -1,5 +1,5 @@
 import React from 'react'
-import travelWorldImage from '../Images/travelWorldImage.jpg';
+import rentalImage from '../Images/RentalImage.jpg';
 
 const Home = ({ user }) => {
   
@@ -10,9 +10,9 @@ const Home = ({ user }) => {
       <h1>Velkommen til LejeLand </h1>
       <h4>Her kan du se dine lejekontrakter både som udlejer og lejer</h4>
 
-      <img src={travelWorldImage} alt="Your Image Description" style={{maxWidth: '500px'}} />
+      <img src={rentalImage} alt="Your Image Description" style={{maxWidth: '500px'}} />
 
-      {user.username === "" ? (<h4>Log ind for at se dine lejekontrakter</h4>) :
+      {user.username === "" ? (<h4>Log ind for at se dine muligheder</h4>) :
         (<></>)}
         
         </div>
