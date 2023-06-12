@@ -119,7 +119,7 @@ const handleSubmit = event => {
         type="submit"
         className="btn btn-primary mt-3 mx-5"
         onClick={handleSubmit}
-        >Submit
+        >Opret
         </button>
         {savedMessage && <div className="mt-3 mx-5">{savedMessage}</div>}
     </div>

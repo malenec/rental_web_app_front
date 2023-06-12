@@ -14,7 +14,7 @@ const Header = ({ user, loggedIn, login, logout }) => {
 
         {!loggedIn ? (<LogIn login={login} />) :
             (<>
-                {user.username === "admin" ? 
+                {user.roles.split(',').includes('admin') ? 
                     (<>
                     <li><NavLink to="/admin">Admin Oversigt</NavLink></li>
                     <li><NavLink to="/newhouse">Opret nyt hus</NavLink></li>

@@ -40,7 +40,7 @@ function ViewRentalsListUser({ user }) {
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          setSavedMessage(`Du er nu afmeldt ${id}`);
+          setSavedMessage(`Du har nu fjernet dig selv fra lejekontrakten med id:  ${id}`);
 
           const updatedRentals = rentals.map(rental => {
             if (rental.id === id) {
@@ -67,7 +67,7 @@ function ViewRentalsListUser({ user }) {
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          setSavedMessage(`Du har nu tilmeldt dig ${data.rentalDTOListList[0].house}`);
+          setSavedMessage(`Du har nu skrevet dig på lejekontrakten med id: ${id}`);
 
           const updatedRentals = rentals.map(rental => {
             if (rental.id === id) {
@@ -113,7 +113,7 @@ function ViewRentalsListUser({ user }) {
       <td style={{ padding: '20px' }}>{rental.house}</td>
               <td style={{ padding: '20px' }}>
               <button className="btn btn-primary" onClick={() => handleAssignRental(rental.id)}>
-                {rental.isUserSignedUp ? 'Afmeld' : 'Tilmeld'}
+                {rental.isUserSignedUp ? 'Fjern mig fra lejekontrakt' : 'Skriv mig på lejekontrakt'}
               </button>
 
               </td>

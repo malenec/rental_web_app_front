@@ -63,7 +63,7 @@ function ViewRentalsListAdmin({ user }) {
               return {
                 ...rental,
                 isUserSignedUp: false,
-                users: rental.users.filter(user => user !== username) // Remove assigned user from the list
+                users: rental.users.filter(user => user !== username)
               };
             }
             return rental;
@@ -95,7 +95,7 @@ function ViewRentalsListAdmin({ user }) {
               return {
                 ...rental,
                 isUserSignedUp: true,
-                users: [...rental.users, username] // Add assigned user to the list
+                users: [...rental.users, username]
               };
             }
             return rental;
@@ -165,9 +165,9 @@ function ViewRentalsListAdmin({ user }) {
             <th style={{ padding: '20px' }}>Kontaktperson</th>
             <th style={{ padding: '20px' }}>Husets ID</th>
             <th style={{ padding: '20px' }}>Lejere</th>
-            <th style={{ padding: '20px' }}>Tildel bruger</th>
-            <th style={{ padding: '20px' }}>Handlinger</th>
-            <th style={{ padding: '20px' }}>Opdater</th>
+            <th style={{ padding: '20px' }}>Tilføj/Fjern lejer</th>
+            <th style={{ padding: '20px' }}>Slet lejekontrakt</th>
+            <th style={{ padding: '20px' }}>Opdater lejekontrakt</th>
           </tr>
         </thead>
         <tbody>
@@ -202,7 +202,7 @@ function ViewRentalsListAdmin({ user }) {
                   }
                 >
                   <option value="">Vælg bruger</option>
-                  {/* Render the list of existing users */}
+
                   {existingUsers.map((user, index) => (
                     <option key={index} value={user}>{user}</option>
                   ))}
@@ -211,7 +211,7 @@ function ViewRentalsListAdmin({ user }) {
                   className="btn btn-primary"
                   onClick={() => handleAssignRental(rental.id, selectedUsers[rental.id])}
                 >
-                  {rental.isUserSignedUp ? 'Afmeld' : 'Tilmeld'}
+                  {rental.isUserSignedUp ? 'Fjern' : 'Tilføj'}
                 </button>
               </td>
               <td style={{ padding: '20px' }}>
@@ -230,7 +230,6 @@ function ViewRentalsListAdmin({ user }) {
       </table>
       {selectedRental && (
         <div>
-          <h2>Opdater lejekontrakt</h2>
           <UpdateRentalForm rental={selectedRental} onUpdate={handleUpdate} />
         </div>
       )}

@@ -25,7 +25,7 @@ function UpdateRentalForm({ rental, onUpdate }) {
       .then(data => {
         console.log(data);
         setSavedMessage(`Lejekontrakten med ID ${data.id} er nu blevet opdateret`);
-        onUpdate(updatedRental); // Pass the updated rental to the onUpdate function
+        onUpdate(updatedRental);
       })
       .catch(error => {
         console.error('Error:', error);
@@ -35,7 +35,7 @@ function UpdateRentalForm({ rental, onUpdate }) {
 
   return (
     <div className="container">
-      <h2>Opdater lejekontrakt</h2>
+      <h3 className='mt-5 mx-5 mb-5'> Opdater din lejekontrakt </h3>
       <form>
         <div className="form-group">
           <label htmlFor="startDate">Startdato:</label>
